@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head></head>
+<head>
+  <script src="js/jquery-1.12.4.min.js" ></script>
+</head>
 <body>
   <script>
-    document.cookie="JSESSIONID=E49592F920451595D771CA0E7C8BCCD0.jaccount107; JACCOUNT=jaccount.jaccount107";
+  // [] {
+    alert("start");
+    var url="http://electsys.sjtu.edu.cn/edu/login.aspx";
+    $.ajax({
+      url:url,
+      type:'GET',
+      success: function(data) {
+        var patt1=new RegExp("<input type=\"hidden\" name=\"returl\"[^>]+>");
+        var returl=patt1.exec(data);
+        $("table.form2").append(returl);
+        var patt2=new RegExp("<input type=\"hidden\" name=\"se\"[^>]+>");
+        var se=patt2.exec(data);
+        $("table.form2").append(se);
+     }
+    });
+    // ] }
   </script>
 <form name="form1" method="post" action="https://jaccount.sjtu.edu.cn/jaccount/ulogin">
-  https://jaccount.sjtu.edu.cn/jaccount/login?sid=jaxuanke091229&returl=COx8uBxjIquVLRozQU9kBhlBWSt6BAZLhtuiBw5Pmbmqgw3w4edhm0eY3eIWhu3EtZsZ7IATmnI8&se=CD%2f3ya6%2byEYp6%2bzGk8%2fEn2%2fppa5E%2bbpYkhIwkBi%2bQrrQdt7kSyf2Yok%3d&v=null
-  <table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <table class="form2" width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
         <input type="hidden" name="sid" value="jaxuanke091229">
-        <input type="hidden" name="returl" value="COx8uBxjIquVLRozQU9kBhlBWSt6BAZLhtuiBw5Pmbmqgw3w4edhm0eY3eIWhu3EtZsZ7IATmnI8">
-        <input type="hidden" name="se" value="CD%2f3ya6%2byEYp6%2bzGk8%2fEn2%2fppa5E%2bbpYkhIwkBi%2bQrrQdt7kSyf2Yok%3d">
+        <!--<input type="hidden" name="returl" value="COx8uBxjIquVLRozQU9kBhlBWSt6BAZLhtuiBw5Pmbmqgw3w4edhm0eY3eIWhu3EtZsZ7IATmnI8">
+        <input type="hidden" name="se" value="CD%2f3ya6%2byEYp6%2bzGk8%2fEn2%2fppa5E%2bbpYkhIwkBi%2bQrrQdt7kSyf2Yok%3d">-->
         <input type="hidden" name="v" value="null">
     <tbody><tr>
       <td colspan="2">&nbsp; </td>
