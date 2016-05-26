@@ -1,66 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Electsys</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="js/jquery-1.12.4.min.js" ></script>
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
   <script>
   // [] {
-    alert("start");
     var url="http://electsys.sjtu.edu.cn/edu/login.aspx";
     $.ajax({
       url:url,
       type:'GET',
       success: function(data) {
+        alert(data);
         var patt1=new RegExp("<input type=\"hidden\" name=\"returl\"[^>]+>");
         var returl=patt1.exec(data);
-        $("table.form2").append(returl);
+        $("form.form1").append(returl);
         var patt2=new RegExp("<input type=\"hidden\" name=\"se\"[^>]+>");
         var se=patt2.exec(data);
-        $("table.form2").append(se);
+        $("form.form1").append(se);
+     },
+     error: function() {
+       alert("wrong: ");
      }
     });
     // ] }
   </script>
-<form name="form1" method="post" action="https://jaccount.sjtu.edu.cn/jaccount/ulogin">
-  <table class="form2" width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <div class="container">
+    <form name="form1" class="form1" method="post" action="https://jaccount.sjtu.edu.cn/jaccount/ulogin">
+
         <input type="hidden" name="sid" value="jaxuanke091229">
         <!--<input type="hidden" name="returl" value="COx8uBxjIquVLRozQU9kBhlBWSt6BAZLhtuiBw5Pmbmqgw3w4edhm0eY3eIWhu3EtZsZ7IATmnI8">
         <input type="hidden" name="se" value="CD%2f3ya6%2byEYp6%2bzGk8%2fEn2%2fppa5E%2bbpYkhIwkBi%2bQrrQdt7kSyf2Yok%3d">-->
-        <input type="hidden" name="v" value="null">
-    <tbody><tr>
-      <td colspan="2">&nbsp; </td>
-      </tr>
-      <tr>
-     <td width="20%" align="right"><img src="https://jaccount.sjtu.edu.cn/jaccount/imgs/login-user.gif" width="25" height="23"></td>
-     <td><input type="text" autocomplete="OFF" name="user" class="input" id="user" placeholder="请输入jAccount用户名" size="21"></td>
-   </tr>
+        <div class="form-group">
+          <label for="exampleInputEmail1">jAccount</label>
+          <input type="text" name="user" class="form-control" id="user">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password"  name="pass" class="form-control" id="pass" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Captcha</label>
+          <input type="text" name="captcha" class="form-control" id="captcha">
+        </div>
 
-   <tr>
-     <td align="right"><img src="https://jaccount.sjtu.edu.cn/jaccount/imgs/login-pwd.gif" width="25" height="23"></td>
-     <td><input type="password" name="pass" class="input" id="pass" placeholder="请输入jAccount密码" size="21"></td>
-   </tr>
-   <tr>
-      <td align="right"><img src="https://jaccount.sjtu.edu.cn/jaccount/imgs/login-num.gif" width="25" height="23"></td>
-      <td height="28"><input type="text" autocomplete="OFF" name="captcha" class="input" id="captcha" placeholder="请输入验证码(忽略大小写)" size="21"></td>
-    </tr>
-    <tr>
-      <td align="right">&nbsp;</td>
-      <td valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tbody><tr>
-          <td><a href="javascript:void(0);" onclick="document.getElementById('imageValidate').src='https://jaccount.sjtu.edu.cn/jaccount/captcha?' + Math.random();">
-<img src="https://jaccount.sjtu.edu.cn/jaccount/captcha" border="0" alt="看不清,请点击图片换一张" id="imageValidate"> 换一张 </a></td>
+        <button type="submit" class="btn btn-default">Submit</button>
+        <tr>
+          <td align="right">&nbsp;</td>
+          <td valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+              <tr>
+                <td><a href="javascript:void(0);" onclick="document.getElementById('imageValidate').src='https://jaccount.sjtu.edu.cn/jaccount/captcha?' + Math.random();">
+                <img src="https://jaccount.sjtu.edu.cn/jaccount/captcha" border="0" alt="看不清,请点击图片换一张" id="imageValidate"> 换一张 </a></td>
+              </tr>
+            </tbody>
+          </table></td>
         </tr>
-      </tbody></table>              </td>
-      </tr>
-      <tr>
-     <td colspan="2"><table width="100%" border="0" cellspacing="6" cellpadding="5">
-       <tbody><tr>
-         <td align="right"><input type="image" name="imageField" src="https://jaccount.sjtu.edu.cn/jaccount/imgs/login-buttom.gif"></td>
-         <td><a href="http://jaccount.sjtu.edu.cn/profile/pass.do"><img border="0" src="https://jaccount.sjtu.edu.cn/jaccount/imgs/login-button2.gif" width="83" height="21"></a></td>
-       </tr>
-     </tbody>
-   </table>
- </form>
+        <tr>
+      </form>
+    </div>
+ <script src="http://code.jquery.com/jquery.js"></script>
+ <script src="js/bootstrap.min.js"></script>
  </body>
  </html>
