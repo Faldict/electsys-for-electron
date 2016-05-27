@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Electsys</title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="js/jquery-1.12.4.min.js" ></script>
   <!-- Bootstrap -->
@@ -30,7 +31,14 @@
     // ] }
   </script>
   <div class="container">
-    <form name="form1" class="form1" method="post" action="https://jaccount.sjtu.edu.cn/jaccount/ulogin">
+    <div class="jumbotron">
+      <img src="img/sjtu.jpg">
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading"><h2 class="panel-title">Log in by jaccount</h2></div>
+      <div class="panel-body">
+        <dic class="container">
+        <form name="form1" class="form1" method="post" action="https://jaccount.sjtu.edu.cn/jaccount/ulogin">
 
         <input type="hidden" name="sid" value="jaxuanke091229">
         <!--<input type="hidden" name="returl" value="COx8uBxjIquVLRozQU9kBhlBWSt6BAZLhtuiBw5Pmbmqgw3w4edhm0eY3eIWhu3EtZsZ7IATmnI8">
@@ -62,7 +70,10 @@
         </tr>
         <tr>
       </form>
+      </dic>
     </div>
+    </div>
+  </div>
  <script src="http://code.jquery.com/jquery.js"></script>
  <script src="js/bootstrap.min.js"></script>
  </body>
